@@ -1,4 +1,4 @@
-package control;
+package control.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +12,6 @@ public class Controll {
     @GetMapping("/hello-start")
     public String hello(Model model){
         model.addAttribute("name", "Tony!");
-        return "hello_start";
+        return "first/hello_start";
     }
 }
