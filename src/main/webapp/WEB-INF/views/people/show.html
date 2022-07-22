@@ -10,8 +10,11 @@
 
 <p>Users:  </p>
 <p th:text="${people.getName()}">Name</p>
-<p th:text="${people.getId()}">id</p>
-<a th:href="@{/people/{id}/edit(id=${people.getId()})}" th:text="Edit + ${people.getName()}">Edit people</a>
+<p th:text="'Id: ' + ${people.getId()}">id</p>
+<p th:text="'Age: ' + ${people.getAge()}">id</p>
+<p th:text="'Email: ' + ${people.getEmail()}">id</p>
+
+<a th:href="@{/people/{id}/edit(id=${people.getId()})}" th:text="'Edit ' + ${people.getName()}">Edit people</a>
 <br/>
 <a href="/MyProj2/people">All users</a>
 <br/>

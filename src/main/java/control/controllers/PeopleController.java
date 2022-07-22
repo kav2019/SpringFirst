@@ -4,9 +4,11 @@ package control.controllers;
 
 import control.dao.PeopleDAO;
 import control.models.People;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -39,7 +41,11 @@ public class PeopleController {
     }
 
     @PostMapping() //отправка формы и редирект на список всех
-    public String create(@ModelAttribute("people") People people){
+    public String create(@ModelAttribute("people") @Valid People people,
+                         BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "people/new";
+        }
         peopleDAO.save(people);
         return "redirect:/people";
     }
@@ -53,7 +59,12 @@ public class PeopleController {
 
 
     @PatchMapping("/{id}") // полуает измененного человека и сохраняет его
-    public String saveEdit(@PathVariable("id") int id, @ModelAttribute("people") People people){
+    public String saveEdit(@ModelAttribute("people") @Valid People people,
+                           BindingResult bindingResult,
+                           @PathVariable("id") int id){
+        if(bindingResult.hasErrors()){
+            return "people/edit";
+        }
         peopleDAO.saveEdit(people, id);
         return "redirect:/people";
     }
