@@ -29,7 +29,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="4241d775-3b01-4c2c-87a2-dcc716778b92">
-      <console name="first_db" type="STANDARD" schema="public" session="Main"><![CDATA[select * from person;]]></console>
+      <console name="first_db" type="STANDARD" schema="public" session="Main"><![CDATA[--update person set id=4 where id=5 limit 1;
+delete from person where id=64 limit 1;
+select * from person;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
